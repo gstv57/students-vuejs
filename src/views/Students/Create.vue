@@ -12,25 +12,26 @@
                 </ul>
                 <div class="mb-3">
                     <label for="">Name</label>
-                    <input type="text" class="form-control" v-model="model.student.name" </div>
-                    <div class="mb-3">
-                        <label for="">Course</label>
-                        <input type="text" class="form-control" v-model="model.student.course">
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Email</label>
-                        <input type="email" class="form-control" v-model="model.student.email">
-                    </div>
-                    <div class="mb-3">
-                        <label for="">Phone</label>
-                        <input type="text" class="form-control" v-model="model.student.phone">
-                    </div>
-                    <div class="mb-3">
-                        <button type="button" @click="saveStudent" class="btn btn-primary">Save</button>
-                    </div>
+                    <input type="text" class="form-control" v-model="model.student.name">
+                </div>
+                <div class="mb-3">
+                    <label for="">Course</label>
+                    <input type="text" class="form-control" v-model="model.student.course">
+                </div>
+                <div class="mb-3">
+                    <label for="">Email</label>
+                    <input type="email" class="form-control" v-model="model.student.email">
+                </div>
+                <div class="mb-3">
+                    <label for="">Phone</label>
+                    <input type="text" class="form-control" v-model="model.student.phone">
+                </div>
+                <div class="mb-3">
+                    <button type="button" @click="saveStudent" class="btn btn-primary">Save</button>
                 </div>
             </div>
         </div>
+    </div>
 </template>
 <script>
 import axios from 'axios';

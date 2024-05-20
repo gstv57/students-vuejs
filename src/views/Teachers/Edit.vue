@@ -5,6 +5,9 @@
                 <h4>Edit Teacher</h4>
             </div>
             <div class="card-body">
+                <div class="mb-3 text-center">
+                    <img :src="profilePicture" alt="Profile Picture" class="rounded-circle" style="width: 100px; height: 100px;">
+                </div>
                 <ul v-if="Object.keys(errorList).length > 0" class="alert alert-warning">
                     <li v-for="(error, index) in errorList" :key="index" class="mb-0 ms-3">
                         {{ error[0] }}
@@ -47,7 +50,12 @@ export default {
                     name: '',
                     matery: '',
                     email: '',
-                    phone: ''
+                    phone: '',
+                    photos: [
+                        {
+                            url: '',
+                        }
+                    ]
                 }
             }
         }
@@ -55,6 +63,11 @@ export default {
     mounted() {
         this.teacherId = this.$route.params.id;
         this.getTeacherData(this.$route.params.id);
+    },
+    computed: {
+        profilePicture() {
+            return this.model.teacher.photos.length > 0 ? this.model.teacher.photos[0].url : '';
+        }
     },
     methods: {
         getTeacherData(teacherId) {

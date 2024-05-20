@@ -26,7 +26,7 @@
                             <td>{{ teacher.email }}</td>
                             <td>{{ teacher.matery }}</td>
                             <td>{{ teacher.phone }}</td>
-                            <td>{{ teacher.created_at }}</td>
+                            <td>{{ formatDate(teacher.created_at) }}</td>
                             <td>
                                 <RouterLink class="btn btn-secondary"
                                     :to="{ path: '/teachers/' + teacher.id + '/edit' }" style="margin-right: 10px;">Edit
@@ -70,16 +70,13 @@ export default {
         },
         deleteTeacher(id) {
             this.$swal({
-                title: 'Are you sure?',
                 text: 'Once deleted, you will not be able to recover this teacher!',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes, delete it!',
                 cancelButtonText: 'No, cancel!',
-                buttons: true,
-                dangerMode: true,
             }).then((willDelete) => {
-                if (willDelete) {
+                if (willDelete.isConfirmed) {
                     axios.delete('https://api-students.test/api/v1/teachers/' + id + '/delete')
                         .then(response => {
                             this.getTeachers();
@@ -88,11 +85,18 @@ export default {
                         .catch(error => {
                             console.log(error);
                         });
-                } else {
-                    this.$swal('Your teacher is safe!');
                 }
             })
-        }
+        },
+        formatDate(dateString) {
+            const options = {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric'
+            };
+            return new Date(dateString).toLocaleDateString('pt-BR', options);
+        },
+        
     }
 }
 </script>

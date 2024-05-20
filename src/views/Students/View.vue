@@ -27,7 +27,7 @@
                             <td>{{ student.course }}</td>
                             <td>{{ student.email }}</td>
                             <td>{{ student.phone }}</td>
-                            <td>{{ student.created_at }}</td>
+                            <td>{{ formatDate(student.created_at) }}</td>
                             <td>
                                 <RouterLink class="btn btn-secondary"
                                     :to="{ path: '/students/' + student.id + '/edit' }" style="margin-right: 10px;">Edit
@@ -85,7 +85,15 @@ export default {
                     this.$swal('Cancelled', 'Your imaginary file is safe :)', 'error');
                 }
             })
-        }
+        },
+        formatDate(dateString) {
+            const options = {
+                year: 'numeric',
+                month: 'numeric',
+                day: 'numeric'
+            };
+            return new Date(dateString).toLocaleDateString('pt-BR', options);
+        },
     }
 }
 </script>

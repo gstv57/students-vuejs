@@ -6,6 +6,9 @@ import StudentEdit from '../views/Students/Edit.vue';
 import TeacherView from '../views/Teachers/View.vue';
 import TeacherCreate from '../views/Teachers/Create.vue';
 import TeacherEdit from '../views/Teachers/Edit.vue';
+import ClassRoomView from '../views/ClassRooms/View.vue';
+import ClassRoomCreate from '../views/ClassRooms/Create.vue';
+import ClassRoomEdit from '../views/ClassRooms/Edit.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -52,6 +55,21 @@ const router = createRouter({
       path: '/teachers/:id/edit',
       name: 'teacherEdit',
       component: TeacherEdit
+    },
+    {
+      path: '/class-rooms',
+      name: 'class-rooms',
+      component: ClassRoomView
+    },
+    {
+      path: '/class-rooms/create',
+      name: 'classRoomsCreate',
+      component: ClassRoomCreate
+    },
+    {
+      path: '/class-rooms/:id/edit',
+      name: 'classRoomsEdit',
+      component: ClassRoomEdit
     }
   ]
 })

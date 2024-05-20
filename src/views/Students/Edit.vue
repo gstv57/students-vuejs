@@ -5,29 +5,36 @@
                 <h4>Edit Student</h4>
             </div>
             <div class="card-body">
+                <div class="mb-3 text-center">
+                    <img :src="profilePicture" alt="Profile Picture" class="rounded-circle" style="width: 100px; height: 100px;">
+                </div>
                 <ul v-if="Object.keys(errorList).length > 0" class="alert alert-warning">
                     <li v-for="(error, index) in errorList" :key="index" class="mb-0 ms-3">
                         {{ error[0] }}
                     </li>
                 </ul>
-                <div class="mb-3">
-                    <label for="">Name</label>
-                    <input type="text" class="form-control" v-model="model.student.name">
-                    <div class="mb-3">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="">Name</label>
+                        <input type="text" class="form-control" v-model="model.student.name">
+                    </div>
+                    <div class="col-md-6 mb-3">
                         <label for="">Course</label>
                         <input type="text" class="form-control" v-model="model.student.course">
                     </div>
-                    <div class="mb-3">
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
                         <label for="">Email</label>
                         <input type="email" class="form-control" v-model="model.student.email">
                     </div>
-                    <div class="mb-3">
+                    <div class="col-md-6 mb-3">
                         <label for="">Phone</label>
                         <input type="text" class="form-control" v-model="model.student.phone">
                     </div>
-                    <div class="mb-3">
-                        <button type="button" @click="updateStudent" class="btn btn-primary">Update</button>
-                    </div>
+                </div>
+                <div class="mb-3">
+                    <button type="button" @click="updateStudent" class="btn btn-primary">Update</button>
                 </div>
             </div>
         </div>
@@ -47,7 +54,12 @@ export default {
                     name: '',
                     course: '',
                     email: '',
-                    phone: ''
+                    phone: '',
+                    photos: [
+                        {
+                            url: '',
+                        }
+                    ]
                 }
             }
         }
@@ -55,6 +67,11 @@ export default {
     mounted() {
         this.studentId = this.$route.params.id;
         this.getStudentData(this.$route.params.id);
+    },
+    computed: {
+        profilePicture() {
+            return this.model.student.photos.length > 0 ? this.model.student.photos[0].url : '';
+        }
     },
     methods: {
         getStudentData(studentId) {
