@@ -34,7 +34,8 @@
                     <label for="">Status</label>
                     <select class="form-select" v-model="model.classRoom.status" aria-label="Default select example">
                         <option value="" selected>Select one status</option>
-                        <option v-for="(status, index) in model.statusEnum" :key="index" :value="status">{{ status }}</option>
+                        <option v-for="(status, index) in model.statusEnum" :key="index" :value="status">{{ status }}
+                        </option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -61,7 +62,6 @@ export default {
                     status: '',
                 }
             },
-            
             statusEnum: []
         }
     },

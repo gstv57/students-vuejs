@@ -85,6 +85,9 @@ export default {
                     this.$swal('Cancelled', 'Your imaginary file is safe :)', 'error');
                 }
             })
+            .catch(error => {
+                this.$swal('Error', error.response.data.message, 'error');
+            });
         },
         formatDate(dateString) {
             const options = {

@@ -29,7 +29,7 @@
                             <td>{{ class_room.status }}</td>
                             <td>
                                 <RouterLink class="btn btn-secondary"
-                                    :to="{ path: '/class_rooms/' + class_room.id + '/edit' }"
+                                    :to="{ path: '/class-rooms/' + class_room.id + '/edit' }"
                                     style="margin-right: 10px;">Edit
                                 </RouterLink>
                                 <button type="button" @click="deleteClassRoom(class_room.id)"
@@ -71,10 +71,14 @@ export default {
                         }
                     });
                 })
+                //  essa parte do código está criando um novo array de objetos, 
+                //  onde cada objeto tem todos os atributos do objeto room correspondente, além de um atributo teacher.
+                //  Esse novo array é então armazenado em this.class_rooms
                 .catch(error => {
                     console.log(error);
                 });
         },
+
         deleteClassRoom(id) {
             this.$swal({
                 text: 'Are you sure you want to delete this student?',

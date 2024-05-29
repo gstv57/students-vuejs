@@ -96,7 +96,6 @@ export default {
             };
             return new Date(dateString).toLocaleDateString('pt-BR', options);
         },
-        
     }
 }
 </script>
